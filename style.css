@@ -37,7 +37,7 @@ header {
   transition: transform 0.2s;
 }
 .card:hover { transform: translateY(-6px); }
-.card img { border-radius: 50%; }
+.card img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 8px; }
 .card .role { color: var(--brand); font-weight: bold; margin: 8px 0; }
 
 footer { text-align: center; padding: 30px; color: #888; } /* 바닥글: 가운데 정렬 */
