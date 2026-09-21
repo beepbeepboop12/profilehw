@@ -6,31 +6,18 @@ btn.addEventListener("click", () => {
 
 const API_BASE = "https://profilehw.onrender.com";
 
-async function callApi(path, statusEl, resultEl) {
-  statusEl.textContent = "호출 중...";
-  statusEl.classList.remove("error", "success");
-  resultEl.textContent = "";
+async function loadIntroTitle() {
+  const titleEl = document.querySelector("#intro-title");
 
   try {
-    const res = await fetch(`${API_BASE}${path}`);
+    const res = await fetch(`${API_BASE}/`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
 
-    statusEl.textContent = "✅ 성공";
-    statusEl.classList.add("success");
-    resultEl.textContent = JSON.stringify(data, null, 2);
+    titleEl.textContent = data.message;
   } catch (err) {
-    statusEl.textContent = "❌ 실패 (서버가 잠시 잠들어 있을 수 있어요. 잠시 후 다시 시도해주세요)";
-    statusEl.classList.add("error");
-    resultEl.textContent = err.message;
+    console.error("백엔드 메시지를 불러오지 못했습니다:", err);
   }
 }
 
-function loadApiData() {
-  callApi("/", document.querySelector("#root-status"), document.querySelector("#root-result"));
-  callApi("/health", document.querySelector("#health-status"), document.querySelector("#health-result"));
-}
-
-document.querySelector("#refresh-btn").addEventListener("click", loadApiData);
-
-loadApiData();
+loadIntroTitle();
