@@ -15,3 +15,4 @@
 ## 배포 주소
 프론트엔드: https://profilehw.vercel.app/  
 백엔드 API: https://profilehw.onrender.com/  
+백엔드 Swagger UI: https://profilehw.onrender.com/docs
